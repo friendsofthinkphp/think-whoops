@@ -9,7 +9,6 @@
     ],
     "license": "MIT",
     "type": "think-extend",
-    "minimum-stability": "dev-master",
     "require": {
         "php": ">=7.1.0",
         "topthink/framework": "6.0.*-dev",
