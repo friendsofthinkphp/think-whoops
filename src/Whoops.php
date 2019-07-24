@@ -5,9 +5,10 @@ namespace think\Whoops;
 
 use Throwable;
 use Whoops\Run;
+use Whoops\Handler\Handler;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Handler\PrettyPageHandler;
-use Whoops\Handler\Handler;
+
 class Whoops
 {
     private $run;
@@ -20,13 +21,11 @@ class Whoops
 
     public function pushHandler($handler): void
     {
-        $class = get_parent_class($handler);
-        if ($class !== 'Whoops\Handler\Handler') {
+        if (false === $handler instanceof Handler) {
             return;
         }
 
-        if ($handler instanceof PrettyPageHandler)
-        {
+        if ($handler instanceof PrettyPageHandler) {
             $handler->setPageTitle('哇哦！框架出错了！');
         }
 
