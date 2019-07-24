@@ -7,9 +7,13 @@
             "email": "saybabi@163.com"
         }
     ],
+    "keywords": [
+        "php",
+        "thinkphp",
+        "think-extend"
+    ],
     "license": "MIT",
     "type": "think-extend",
-    "minimum-stability": "dev-master",
     "require": {
         "php": ">=7.1.0",
         "topthink/framework": "6.0.*-dev",
