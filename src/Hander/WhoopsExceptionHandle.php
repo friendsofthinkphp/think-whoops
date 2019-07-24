@@ -37,7 +37,7 @@ class WhoopsExceptionHandle extends Handle
             if ($e instanceof HttpException && $request->isAjax()) {
                 $content = $this->whoops->renderJsonException($e);
             } else {
-                $content = $this->whoops->renderException($e);
+                $content = $this->whoops->renderHtmlException($e);
             }
 
             return Response::create(
