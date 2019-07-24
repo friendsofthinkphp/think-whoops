@@ -27,7 +27,7 @@ class Whoops
 
         if ($handler instanceof PrettyPageHandler)
         {
-            $handler->setPageTitle('哇哦！框架出错了！' . $class);
+            $handler->setPageTitle('哇哦！框架出错了！');
         }
 
         $this->run->pushHandler($handler);
