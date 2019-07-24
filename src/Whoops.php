@@ -18,7 +18,7 @@ class Whoops
         $this->run->register();
     }
 
-    public function renderException(Throwable $e): String
+    public function renderHtmlException(Throwable $e): String
     {
         $this->run->pushHandler(new PrettyPageHandler());
         return $this->run->handleException($e);
