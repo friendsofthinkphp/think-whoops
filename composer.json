@@ -7,6 +7,11 @@
             "email": "saybabi@163.com"
         }
     ],
+    "keywords": [
+        "php",
+        "thinkphp",
+        "think-extend"
+    ],
     "license": "MIT",
     "type": "think-extend",
     "require": {
