@@ -5,7 +5,6 @@ namespace think\Whoops;
 
 use Throwable;
 use Whoops\Run;
-use think\Response;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Handler\PrettyPageHandler;
 
