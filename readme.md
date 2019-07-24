@@ -12,3 +12,6 @@ $ composer require xiaodi/think-whoops
 ```
 APP_DEBUG = true
 ```
+
+## 效果
+![img](https://www.xiaodim.com/images/whoops.png)
