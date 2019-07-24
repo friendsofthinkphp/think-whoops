@@ -7,6 +7,7 @@ $ composer require xiaodi/think-whoops
 ```
 
 ## 开启
+开启调试(debug)模式
 `.env`
 ```
 APP_DEBUG = true
