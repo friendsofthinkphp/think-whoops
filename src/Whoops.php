@@ -7,7 +7,7 @@ use Throwable;
 use Whoops\Run;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Handler\PrettyPageHandler;
-
+use Whoops\Handler\Handler;
 class Whoops
 {
     private $run;
@@ -18,15 +18,23 @@ class Whoops
         $this->run->register();
     }
 
-    public function renderHtmlException(Throwable $e): String
+    public function pushHandler($handler): void
     {
-        $this->run->pushHandler(new PrettyPageHandler());
-        return $this->run->handleException($e);
+        $class = get_parent_class($handler);
+        if ($class !== 'Whoops\Handler\Handler') {
+            return;
+        }
+
+        if ($handler instanceof PrettyPageHandler)
+        {
+            $handler->setPageTitle('哇哦！框架出错了！' . $class);
+        }
+
+        $this->run->pushHandler($handler);
     }
 
-    public function renderJsonException(Throwable $e): String
+    public function getHandleException(Throwable $e): String
     {
-        $this->run->pushHandler(new JsonResponseHandler());
         return $this->run->handleException($e);
     }
 }

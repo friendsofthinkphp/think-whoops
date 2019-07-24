@@ -12,7 +12,8 @@ use think\App;
 use Throwable;
 use Whoops\Run;
 use think\Whoops\Whoops;
-
+use Whoops\Handler\JsonResponseHandler;
+use Whoops\Handler\PrettyPageHandler;
 class WhoopsExceptionHandle extends Handle
 {
     private $whoops;
@@ -34,11 +35,13 @@ class WhoopsExceptionHandle extends Handle
         if (env('APP_DEBUG')) {
             
             // 请求异常
+            $this->whoops->pushHandler(new PrettyPageHandler);
+
             if ($e instanceof HttpException && $request->isAjax()) {
-                $content = $this->whoops->renderJsonException($e);
-            } else {
-                $content = $this->whoops->renderHtmlException($e);
+                $this->whoops->pushHandler(new JsonResponseHandler);
             }
+
+            $content = $this->whoops->getHandleException($e);
 
             return Response::create(
                 $content,
