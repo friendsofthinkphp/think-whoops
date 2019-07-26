@@ -33,7 +33,7 @@ class WhoopsExceptionHandle extends Handle
             return json($e->getError(), 422);
         }
 
-        if (env('APP_DEBUG')) {
+        if ($this->app->isDebug()) {
             
             // 请求异常
             
