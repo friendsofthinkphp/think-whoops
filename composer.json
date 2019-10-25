@@ -3,8 +3,8 @@
     "description": "A debug service for ThinkPHP.",
     "authors": [
         {
-            "name": "xiaodit",
-            "email": "saybabi@163.com"
+            "name": "xiaodi",
+            "email": "liangjinbiao@live.com"
         }
     ],
     "keywords": [
@@ -16,7 +16,7 @@
     "type": "think-extend",
     "require": {
         "php": ">=7.1.0",
-        "topthink/framework": "6.0.*-dev",
+        "topthink/framework": "6.0.*",
         "filp/whoops": "^2.4"
     },
     "autoload": {
