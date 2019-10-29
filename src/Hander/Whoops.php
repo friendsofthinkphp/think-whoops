@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace think\Whoops\Hander;
 
+use think\Whoops\Runner;
 use think\exception\Handle;
 use think\Response;
 use think\App;
 
 use Throwable;
-use think\Whoops\Run;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Handler\PrettyPageHandler;
 
@@ -17,10 +17,10 @@ class Whoops extends Handle
 {
     private $runner;
 
-    public function __construct(App $app, Run $run)
+    public function __construct(App $app, Runner $runner)
     {
         parent::__construct($app);
-        $this->runner = $run;
+        $this->runner = $runner;
     }
 
     public function render($request, Throwable $e): Response
@@ -36,12 +36,7 @@ class Whoops extends Handle
 
             $this->runner->register();
 
-            $content = $this->runner->handleException($e);
-            // return Response::create(
-            //     1234,
-            //     200,
-            //     $e->getHeaders()
-            // );
+            $this->runner->handleException($e);
         }
 
         // 其他错误交给系统处理
