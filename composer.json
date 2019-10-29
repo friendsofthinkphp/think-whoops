@@ -28,7 +28,10 @@
         "think": {
             "services": [
                 "think\\Whoops\\WhoopsService"
-            ]
+            ],
+            "config": {
+                "whoops": "src/Config/config.php"
+            }
         }
     }
 }
