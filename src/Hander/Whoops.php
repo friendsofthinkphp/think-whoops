@@ -21,13 +21,12 @@ class Whoops extends Handle
     {
         parent::__construct($app);
         $this->runner = $run;
-        $this->runner->register();
     }
 
     public function render($request, Throwable $e): Response
     {
         // Whoops 接管请求异常
-        if (config('whoops.enable')) {
+        if (config('whoops.enable') && $this->app->isDebug()) {
             $this->runner->pushHandler(new PrettyPageHandler);
 
             // 兼容 Cors请求
@@ -35,6 +34,7 @@ class Whoops extends Handle
                 $this->runner->pushHandler(new JsonResponseHandler);
             }
 
+            $this->runner->register();
             return $this->runner->handleException($e);
         }
 
