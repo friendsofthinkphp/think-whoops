@@ -1,6 +1,8 @@
 <?php
 namespace think\Whoops;
 
+use think\App;
+use think\Facade\Request;
 use InvalidArgumentException;
 use Whoops\Exception\ErrorException;
 use Whoops\Exception\Inspector;
@@ -33,7 +35,8 @@ final class Run implements RunInterface
     private $system;
 
     private $options = [
-        'page_title' => '发生内部错误,请稍后再试' 
+        'editor' => '',
+        'title' => '发生内部错误,请稍后再试' 
     ];
 
     public function __construct(SystemFacade $system = null)
@@ -314,7 +317,22 @@ final class Run implements RunInterface
         try {
             foreach ($this->handlerQueue as $handler) {
                 if ($handler instanceof PrettyPageHandler) {
-                    $handler->setPageTitle($this->options['page_title']);
+                    $handler->addDataTable('ThinkPHP Application', [
+                        'Version'         => App::VERSION,
+                        'Accept Charset'  => Request::header('ACCEPT_CHARSET') ?: '<none>',
+                        'HTTP Method'     => Request::method(),
+                        'Path'            => Request::pathinfo(),
+                        'Query String'    => Request::query() ?: '<none>',
+                        'Base URL'        => Request::baseUrl(),
+                        'Scheme'          => Request::scheme(),
+                        'Port'            => Request::port(),
+                        'Host'            => Request::host()
+                    ]);
+
+                    if ($this->options['editor']) {
+                        $handler->setEditor($this->options['editor']);
+                    }
+                    $handler->setPageTitle($this->options['title']);
                 }
                 $handler->setRun($this);
                 $handler->setInspector($inspector);

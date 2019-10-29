@@ -35,7 +35,13 @@ class Whoops extends Handle
             }
 
             $this->runner->register();
-            return $this->runner->handleException($e);
+
+            $content = $this->runner->handleException($e);
+            // return Response::create(
+            //     1234,
+            //     200,
+            //     $e->getHeaders()
+            // );
         }
 
         // 其他错误交给系统处理
