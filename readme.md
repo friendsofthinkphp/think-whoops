@@ -1,5 +1,11 @@
 # think-whoops
+
 让Whoops接管ThinkPHP6异常, Whoops提供stackbased错误捕获及超美观的错误
+
+[![Latest Stable Version](https://poser.pugx.org/xiaodi/think-whoops/version)](https://packagist.org/packages/xiaodi/think-whoops)
+[![Total Downloads](https://poser.pugx.org/xiaodi/think-whoops/downloads)](https://packagist.org/packages/xiaodi/think-whoops)
+[![License](https://poser.pugx.org/xiaodi/think-whoops/license)](https://packagist.org/packages/xiaodi/think-whoops)
+
 
 ## 安装
 ```php
