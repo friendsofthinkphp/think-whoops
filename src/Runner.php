@@ -4,8 +4,8 @@ namespace think\Whoops;
 
 use think\App;
 use think\Facade\Request;
-use Whoops\Run;
 use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
 
 class Runner
 {
@@ -13,7 +13,7 @@ class Runner
 
     private $options = [
         'editor' => '',
-        'title' => '发生内部错误,请稍后再试'
+        'title'  => '发生内部错误,请稍后再试',
     ];
 
     public function __construct(Run $run)
@@ -42,7 +42,7 @@ class Runner
                     'Base URL'        => Request::baseUrl(),
                     'Scheme'          => Request::scheme(),
                     'Port'            => Request::port(),
-                    'Host'            => Request::host()
+                    'Host'            => Request::host(),
                 ]);
 
                 if ($this->options['editor']) {
