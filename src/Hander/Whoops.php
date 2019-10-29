@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace think\Whoops\Hander;
 
+use think\App;
+use think\Response;
 use think\Whoops\Runner;
 use think\exception\Handle;
-use think\Response;
-use think\App;
-
 use Throwable;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Handler\PrettyPageHandler;
