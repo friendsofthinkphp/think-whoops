@@ -28,8 +28,8 @@ class Whoops extends Handle
         if (config('whoops.enable') && $this->app->isDebug()) {
             $this->runner->pushHandler(new PrettyPageHandler());
 
-            // 兼容 Cors请求
-            if ($request->isAjax() || $_SERVER['HTTP_SEC_FETCH_MODE'] === 'cors') {
+            // 兼容 Cors请求(一些调试接口插件)
+            if ($request->isAjax() || (isset($_SERVER['HTTP_SEC_FETCH_MODE']) && $_SERVER['HTTP_SEC_FETCH_MODE'] === 'cors')) {
                 $this->runner->pushHandler(new JsonResponseHandler());
             }
 
