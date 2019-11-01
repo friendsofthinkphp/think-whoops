@@ -26,6 +26,16 @@ class Whoops extends Handle
     {
         // Whoops 接管请求异常
         if (config('whoops.enable') && $this->app->isDebug()) {
+           
+            $this->isJson = $request->isJson();
+            if ($e instanceof HttpResponseException) {
+                return $e->getResponse();
+            } elseif ($e instanceof HttpException) {
+                return $this->renderHttpException($e);
+            } else {
+                return $this->convertExceptionToResponse($e);
+            }
+            
             $this->runner->pushHandler(new PrettyPageHandler());
 
             // 兼容 Cors请求(一些调试接口插件)
