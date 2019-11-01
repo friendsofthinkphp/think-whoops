@@ -3,7 +3,7 @@
 namespace think\Whoops;
 
 use think\App;
-use think\Facade\Request;
+use think\facade\Request;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
