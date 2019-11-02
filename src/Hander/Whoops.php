@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace think\Whoops\Hander;
 
 use think\App;
-use think\exception\Handle;
 use think\Response;
+use think\exception\Handle;
+use think\exception\HttpResponseException;
 use think\Whoops\Runner;
 use Throwable;
 use Whoops\Handler\JsonResponseHandler;
@@ -26,9 +27,14 @@ class Whoops extends Handle
     {
         // Whoops 接管请求异常
         if (config('whoops.enable') && $this->app->isDebug()) {
+
+            if ($e instanceof HttpResponseException) {
+                return $e->getResponse();
+            }
+
             $this->runner->pushHandler(new PrettyPageHandler());
 
-            // 兼容 Cors请求(一些调试接口插件)
+            // 兼容 Cors请求
             if ($request->isAjax() || (isset($_SERVER['HTTP_SEC_FETCH_MODE']) && $_SERVER['HTTP_SEC_FETCH_MODE'] === 'cors')) {
                 $this->runner->pushHandler(new JsonResponseHandler());
             }
