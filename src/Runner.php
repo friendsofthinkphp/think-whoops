@@ -4,6 +4,7 @@ namespace think\Whoops;
 
 use think\App;
 use think\facade\Request;
+use think\facade\Env;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
@@ -44,10 +45,16 @@ class Runner
                     'Port'            => Request::port(),
                     'Host'            => Request::host(),
                 ]);
+                
+                // 环境变量
+                $handler->addDataTable('Environment', Env::get());
 
+                // 从异常堆栈跟踪中打开代码编辑器
                 if ($this->options['editor']) {
                     $handler->setEditor($this->options['editor']);
                 }
+                
+                // 设置标题
                 $handler->setPageTitle($this->options['title']);
             }
         }
