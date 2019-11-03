@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace think\Whoops\Hander;
 
 use think\App;
-use think\Response;
 use think\exception\Handle;
 use think\exception\HttpResponseException;
+use think\Response;
 use think\Whoops\Runner;
 use Throwable;
 use Whoops\Handler\JsonResponseHandler;
@@ -27,7 +27,6 @@ class Whoops extends Handle
     {
         // Whoops 接管请求异常
         if (config('whoops.enable') && $this->app->isDebug()) {
-
             if ($e instanceof HttpResponseException) {
                 return $e->getResponse();
             }
