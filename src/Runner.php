@@ -48,7 +48,6 @@ class Runner
 
                 // 环境变量
                 $_ENV = Env::get();
-                // $handler->addDataTable('Environment', Env::get());
 
                 // 从异常堆栈跟踪中打开代码编辑器
                 if ($this->options['editor']) {
