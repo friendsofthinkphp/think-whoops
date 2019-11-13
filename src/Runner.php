@@ -34,16 +34,18 @@ class Runner
 
         foreach ($handlers as $handler) {
             if ($handler instanceof PrettyPageHandler) {
+                
                 $handler->addDataTable('ThinkPHP Application', [
-                    'Version'         => App::VERSION,
-                    'Accept Charset'  => Request::header('ACCEPT_CHARSET') ?: '<none>',
-                    'HTTP Method'     => Request::method(),
-                    'Path'            => Request::pathinfo(),
-                    'Query String'    => Request::query() ?: '<none>',
-                    'Base URL'        => Request::baseUrl(),
-                    'Scheme'          => Request::scheme(),
-                    'Port'            => Request::port(),
-                    'Host'            => Request::host(),
+                    'Version'      => App::VERSION,
+                    'URI'          => Request::url(true),
+                    'Request URI'  => Request::url(),
+                    'Path Info'    => Request::pathinfo(),
+                    'Query String' => Request::query() ?: '<none>',
+                    'HTTP Method'  => Request::method(),
+                    'Base URL'     => Request::baseUrl(),
+                    'Scheme'       => Request::scheme(),
+                    'Port'         => Request::port(),
+                    'Host'         => Request::host(),
                 ]);
 
                 // 环境变量
