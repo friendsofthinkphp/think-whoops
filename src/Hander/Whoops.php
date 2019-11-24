@@ -34,7 +34,7 @@ class Whoops extends Handle
             $this->runner->pushHandler(new PrettyPageHandler());
 
             // 兼容 Cors Postman 请求
-            if ($request->isAjax() || 
+            if ($request->isAjax() ||
                 false !== strpos($_SERVER['HTTP_USER_AGENT'], 'Postman') ||
                 (isset($_SERVER['HTTP_SEC_FETCH_MODE']) && $_SERVER['HTTP_SEC_FETCH_MODE'] === 'cors')) {
                 $this->runner->pushHandler(new JsonResponseHandler());

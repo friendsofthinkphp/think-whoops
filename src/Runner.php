@@ -34,7 +34,6 @@ class Runner
 
         foreach ($handlers as $handler) {
             if ($handler instanceof PrettyPageHandler) {
-                
                 $handler->addDataTable('ThinkPHP Application', [
                     'Version'      => App::VERSION,
                     'URI'          => Request::url(true),
