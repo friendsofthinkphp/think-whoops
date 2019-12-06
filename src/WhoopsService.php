@@ -11,6 +11,7 @@ class WhoopsService extends Service
 {
     public function register()
     {
+        $this->app->bind('whoops', Runner::class);
         $this->app->bind('think\exception\Handle', Whoops::class);
     }
 }
