@@ -15,7 +15,7 @@ class Whoops extends Handle
     public function render($request, Throwable $e): Response
     {
         // Whoops 接管请求异常
-        if (config('whoops.enable')) {
+        if (config('whoops.enable') && $this->app->isDebug()) {
             if ($e instanceof HttpResponseException) {
                 return $e->getResponse();
             }
