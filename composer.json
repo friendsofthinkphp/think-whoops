@@ -10,10 +10,10 @@
     "keywords": [
         "php",
         "thinkphp",
-        "think-extend"
+        "whoops"
     ],
     "license": "MIT",
-    "type": "think-extend",
+    "type": "library",
     "require": {
         "php": ">=7.1.0",
         "topthink/framework": "6.0.*",
