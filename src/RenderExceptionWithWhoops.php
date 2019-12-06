@@ -27,6 +27,7 @@ class RenderExceptionWithWhoops extends Handle
             }
 
             $this->app->whoops->pushHandler(new PrettyPageHandler());
+
             return Response::create(
                 $this->app->whoops->handleException($e),
                 'html',
