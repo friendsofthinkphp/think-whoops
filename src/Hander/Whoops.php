@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace think\Whoops\Hander;
 
-use think\Response;
 use think\exception\Handle;
+use think\exception\HttpResponseException;
+use think\Response;
 use Throwable;
 use Whoops\Handler\PrettyPageHandler;
-use think\exception\HttpResponseException;
 
 class Whoops extends Handle
 {
@@ -35,9 +35,10 @@ class Whoops extends Handle
     }
 
     /**
-     * 接管Ajax异常
+     * 接管Ajax异常.
      *
      * @param Throwable $e
+     *
      * @return void
      */
     protected function handleAjaxException(Throwable $e)
