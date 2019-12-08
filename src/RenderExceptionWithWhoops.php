@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace think\Whoops;
 
 use think\exception\Handle;
-use think\exception\HttpResponseException;
 use think\exception\HttpException;
+use think\exception\HttpResponseException;
 use think\Response;
 use Throwable;
 use Whoops\Handler\PrettyPageHandler;
