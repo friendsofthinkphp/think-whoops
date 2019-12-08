@@ -6,6 +6,7 @@ namespace think\Whoops;
 
 use think\exception\Handle;
 use think\exception\HttpResponseException;
+use think\exception\HttpException;
 use think\Response;
 use Throwable;
 use Whoops\Handler\PrettyPageHandler;
@@ -69,6 +70,13 @@ class RenderExceptionWithWhoops extends Handle
             ],
         ];
 
-        return Response::create($data, 'json', $e->getCode());
+        $response = Response::create($data, 'json');
+
+        if ($e instanceof HttpException) {
+            $statusCode = $e->getStatusCode();
+            $response->header($e->getHeaders());
+        }
+
+        return $response->code($statusCode ?? 500);
     }
 }
