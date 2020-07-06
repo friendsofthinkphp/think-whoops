@@ -47,9 +47,6 @@ class Whoops
                     'Host'         => Request::host(),
                 ]);
 
-                // 环境变量
-                $_ENV = Env::get();
-
                 // 从异常堆栈跟踪中打开代码编辑器
                 if ($this->options['editor']) {
                     $handler->setEditor($this->options['editor']);
